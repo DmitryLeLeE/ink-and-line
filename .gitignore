@@ -1,0 +1,13 @@
+.DS_Store
+Thumbs.db
+node_modules/
+*.log
+test_*.js
+generate_*.py
+optimize_*.py
+update_*.py
+app.js
+crypto.js
+chat.js
+qrcode.js
+*.pdf

@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L'ENCRE // Студия тонкой татуировки и эскизы</title>
+    
+    <!-- Social Preview (Open Graph & Twitter Cards) -->
+    <meta property="og:title" content="L'ENCRE // Студия тонкой татуировки и эскизы">
+    <meta property="og:description" content="Авторская контурная графика, микро-линии, ботанический минимализм и памятка по правильному заживлению.">
+    <meta property="og:image" content="https://dmitrylelee.github.io/ink-and-line/preview.png">
+    <meta property="og:url" content="https://dmitrylelee.github.io/ink-and-line/">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="L'ENCRE // Студия тонкой татуировки и эскизы">
+    <meta name="twitter:description" content="Авторская контурная графика, микро-линии, ботанический минимализм и памятка по правильному заживлению.">
+    <meta name="twitter:image" content="https://dmitrylelee.github.io/ink-and-line/preview.png">
+
+    <!-- Progressive Web App (Offline Support) -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#f8f7f4">
+    <link rel="apple-touch-icon" href="icon-192.png">
+
+    <!-- Шрифтовая триада: Cormorant Garamond (антиква) + Plus Jakarta Sans + JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400;1,600&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Фавиконка пера -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%23141416%22 stroke-width=%221.5%22><path d=%22M12 19l7-7 3 3-7 7-3-3z%22/><path d=%22M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z%22/><path d=%22M2 2l7.586 7.586%22/><circle cx=%2211%22 cy=%2211%22 r=%222%22/></svg>">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Процедурный слой фактуры хлопковой бумаги -->
+    <div class="paper-grain-overlay" aria-hidden="true"></div>
+
+    <!-- Шапка студии -->
+    <header class="studio-header">
+        <div class="header-container">
+            <div class="studio-brand" id="logoTrigger" title="Главная страница каталога">
+                <span class="brand-name">L'ENCRE</span>
+                <span class="brand-desc">Студия тонкой графики и ботаники</span>
+            </div>
+
+            <!-- Навигация студии -->
+            <nav class="studio-nav">
+                <a href="#sketchesCatalogSection" class="nav-link">Эскизы</a>
+                <a href="#artistsSection" class="nav-link">Мастера</a>
+                <a href="#healingSection" class="nav-link">Заживление</a>
+                <a href="#studioLocationsSection" class="nav-link">Студия</a>
+            </nav>
+
+            <!-- Строка живого поиска по каталогу (также шлюз входа) -->
+            <div class="search-wrapper">
+                <input type="text" id="recipeSearchInput" placeholder="Поиск эскиза по названию или зоне..." autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false">
+                <button class="search-trigger-btn" id="recipeSearchBtn" type="button" aria-label="Искать">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Основной контент: скетчбук и памятка -->
+    <main class="main-content">
+        
+        <!-- Hero: редакционная типографика -->
+        <section class="editorial-hero">
+            <div class="hero-meta-label">Каталог эскизов // Сезон 2026</div>
+            <h1 class="hero-title">Авторская контурная графика, микро-линии и ботанический минимализм</h1>
+            <p class="hero-subtitle">Все эскизы разрабатываются индивидуально под анатомические линии тела (ключицы, рёбра, запястья). Нанесение тончайшими стерильными модулями без утолщения контура с годами.</p>
+            
+            <div class="studio-specs-row">
+                <div class="spec-item">
+                    <span class="spec-value">0.22 мм</span>
+                    <span class="spec-label">Толщина контурной иглы</span>
+                </div>
+                <div class="spec-item">
+                    <span class="spec-value">Kwadron</span>
+                    <span class="spec-label">Стерильные картриджи</span>
+                </div>
+                <div class="spec-item">
+                    <span class="spec-value">5 дней</span>
+                    <span class="spec-label">Заживление под плёнкой</span>
+                </div>
+                <div class="spec-item">
+                    <span class="spec-value">Organic</span>
+                    <span class="spec-label">Гипоаллергенный пигмент</span>
+                </div>
+            </div>
+            <div class="hero-actions-row">
+                <button type="button" class="hero-consult-btn" id="heroConsultBtn">Записаться на консультацию</button>
+                <a href="#sketchesCatalogSection" class="hero-catalog-btn">Смотреть свободные эскизы</a>
+                <span class="hero-consult-note">Индивидуальная примерка эскиза на кальке перед сеансом бесплатна</span>
+            </div>
+        </section>
+
+        <!-- Раздел манифеста и стандартов качества -->
+        <section class="manifesto-section">
+            <div class="manifesto-grid">
+                <div class="manifesto-card">
+                    <span class="manifesto-num">01 / СТЕРИЛЬНОСТЬ</span>
+                    <h4>Хирургический барьерный протокол</h4>
+                    <p>Автоклавирование инструментов класса B (Euronda, Италия), стерильные одноразовые модули Kwadron с защитной мембраной против обратного оттока пигмента.</p>
+                </div>
+                <div class="manifesto-card">
+                    <span class="manifesto-num">02 / ПИГМЕНТ</span>
+                    <h4>Органический угольный Dynamic Black</h4>
+                    <p>Веганский гипоаллергенный углеродный пигмент сверхмелкого помола (США). Не окисляется, не выцветает в синий или зелёный оттенок и сохраняет прозрачность контура.</p>
+                </div>
+                <div class="manifesto-card">
+                    <span class="manifesto-num">03 / АНАТОМИЯ</span>
+                    <h4>Посадка по естественным линиям тела</h4>
+                    <p>Каждый эскиз масштабируется и выравнивается по изгибу мышц, ключиц и рёбер на индивидуальной примерке трансфера перед началом нанесения.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Раздел локаций студии и правил -->
+        <section class="locations-section" id="studioLocationsSection">
+            <div class="section-header-row">
+                <div>
+                    <span class="section-micro-tag">ПРОСТРАНСТВА L'ENCRE</span>
+                    <h2 class="section-title">Камерные студии в двух столицах</h2>
+                </div>
+                <p class="section-desc-side">Приём гостей проходит строго по индивидуальной предварительной записи в приватных кабинетах.</p>
+            </div>
+
+            <div class="locations-grid">
+                <div class="location-card">
+                    <span class="location-city">САНКТ-ПЕТЕРБУРГ</span>
+                    <h4>Студия на Рубинштейна</h4>
+                    <p class="location-address">ул. Рубинштейна, 24 • Исторический доходный дом</p>
+                    <p class="location-desc">Просторный мансардный лофт с естественным северным светом, дубовым паркетом и персональной чайной комнатой для отдыха перед сеансом.</p>
+                    <div class="location-hours">Ср — Вс: 11:00 — 21:00 (по записи)</div>
+                </div>
+
+                <div class="location-card">
+                    <span class="location-city">МОСКВА</span>
+                    <h4>Студия на Покровке</h4>
+                    <p class="location-address">ул. Покровка, 12 • Особняк XIX века</p>
+                    <p class="location-desc">Тихий закрытый двор, высокие сводчатые потолки и медицинский уровень стерильности. Пространство создано для глубокого спокойствия и уединения.</p>
+                    <div class="location-hours">Вт — Сб: 12:00 — 21:00 (по записи)</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Каталог эскизов с живой интерактивной фильтрацией -->
+        <section id="sketchesCatalogSection">
+            <div class="section-header-row">
+                <div>
+                    <span class="section-micro-tag">КОЛЛЕКЦИЯ 2026</span>
+                    <h2 class="section-title">Свободные авторские эскизы</h2>
+                </div>
+                <div class="filter-tags" id="categoryFilterTags">
+                    <button class="filter-pill active" data-filter="all" type="button">Все работы (12)</button>
+                    <button class="filter-pill" data-filter="botany" type="button">Ботаника (4)</button>
+                    <button class="filter-pill" data-filter="fineline" type="button">Fine Line (4)</button>
+                    <button class="filter-pill" data-filter="geometry" type="button">Космос и геометрия (2)</button>
+                    <button class="filter-pill" data-filter="antique" type="button">Миниатюра и арка (2)</button>
+                </div>
+            </div>
+
+            <div class="sketches-catalog" id="sketchesCatalog">
+
+                <!-- Эскиз 1: Пион и папоротник -->
+                <article class="sketch-entry" data-category="botany" data-keywords="пион папоротник ботаника цветы ключица рёбра александра вейс"
+                    data-title="Дикий пион и ветка папоротника"
+                    data-desc="Плавная многослойная контурная графика. Идеально ложится вдоль линии ключицы или по изгибу рёбер."
+                    data-size="12 × 6 см"
+                    data-duration="~2.5 часа"
+                    data-price="7 500 ₽"
+                    data-category-name="БОТАНИКА"
+                    data-img="images/sketch-peony.jpg">
+                    <div class="sketch-art-canvas">
+                        <img src="images/sketch-peony.jpg" alt="Эскиз: Дикий пион и папоротник" class="sketch-img-photo" loading="lazy">
+                        <span class="sketch-status-tag status-free">● Свободен</span>
+                    </div>
+                    <div class="sketch-content">
+                        <div class="sketch-top-meta">
+                            <span class="sketch-cat-mini">БОТАНИКА</span>
+                            <span class="sketch-price-tag">7 500 ₽</span>
+                        </div>
+                        <h3 class="sketch-heading">Дикий пион и ветка папоротника</h3>
+                        <p class="sketch-description">Плавная многослойная контурная графика. Идеально ложится вдоль линии ключицы или по изгибу рёбер.</p>
+                        <div class="sketch-details-table">
+                            <span>Размер: 12 × 6 см</span>
+                            <span>Сеанс: ~2.5 часа</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Эскиз 2: Тонкая змея и лунный цикл -->
+                <article class="sketch-entry" data-category="fineline" data-keywords="змея луна фазы луны fine line предплечье контур матиас блан"
+                    data-title="Тонкая змея и лунные фазы"
+                    data-desc="Деликатная микро-линия 0.22 мм и аккуратный точечный градиент. Прекрасно смотрится на предплечье или лодыжке."
+                    data-size="14 × 4 см"
+                    data-duration="~2 часа"
+                    data-price="6 500 ₽"
+                    data-category-name="FINE LINE"
+                    data-img="images/sketch-snake.jpg">
+                    <div class="sketch-art-canvas">
+                        <img src="images/sketch-snake.jpg" alt="Эскиз: Змея и фазы луны" class="sketch-img-photo" loading="lazy">
+                        <span class="sketch-status-tag status-free">● Свободен</span>
+                    </div>
+                    <div class="sketch-content">
+                        <div class="sketch-top-meta">
+                            <span class="sketch-cat-mini">FINE LINE</span>
+                            <span class="sketch-price-tag">6 500 ₽</span>
+                        </div>
+                        <h3 class="sketch-heading">Тонкая змея и лунные фазы</h3>
+                        <p class="sketch-description">Деликатная микро-линия 0.22 мм и аккуратный точечный градиент. Прекрасно смотрится на предплечье или лодыжке.</p>
+                        <div class="sketch-details-table">
+                            <span>Размер: 14 × 4 см</span>
+                            <span>Сеанс: ~2 часа</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Эскиз 3: Сакральная геометрия и орбиты -->
+                <article class="sketch-entry" data-category="geometry" data-keywords="геометрия орбиты солнце космос тонкая линия спина предплечье"
+                    data-title="Сакральная геометрия и орбиты"
+                    data-desc="Концентрические окружности и астрономические оси. Строгая гармония пропорций, подходящая для предплечья или лопатки."
+                    data-size="10 × 10 см"
+                    data-duration="~3 часа"
+                    data-price="8 500 ₽"
+                    data-category-name="ГЕОМЕТРИЯ"
+                    data-img="images/sketch-geometry.jpg">
+                    <div class="sketch-art-canvas">
+                        <img src="images/sketch-geometry.jpg" alt="Эскиз: Сакральная геометрия" class="sketch-img-photo" loading="lazy">
+                        <span class="sketch-status-tag status-archive">○ En archive</span>
+                    </div>
+                    <div class="sketch-content">
+                        <div class="sketch-top-meta">
+                            <span class="sketch-cat-mini">ГЕОМЕТРИЯ</span>
+                            <span class="sketch-price-tag">8 500 ₽</span>
+                        </div>
+                        <h3 class="sketch-heading">Сакральная геометрия и орбиты</h3>
+                        <p class="sketch-description">Концентрические окружности и астрономические оси. Строгая гармония пропорций, подходящая для предплечья или лопатки.</p>
+                        <div class="sketch-details-table">
+                            <span>Размер: 10 × 10 см</span>
+                            <span>Повтор под заказ</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Эскиз 4: Степной мак и дикие травы -->
+                <article class="sketch-entry" data-category="botany" data-keywords="мак цветы стебель дикие травы ботаника предплечье позвоночник"
+                    data-title="Степной мак и дикие травы"
+                    data-desc="Воздушный контур цветка без плотного закраса. Прекрасно смотрится на предплечье или вдоль позвоночника."
+                    data-size="9 × 4 см"
+                    data-duration="~1.5 часа"
+                    data-price="5 500 ₽"
+                    data-category-name="БОТАНИКА"
+                    data-img="images/sketch-botany.jpg">
+                    <div class="sketch-art-canvas">
+                        <img src="images/sketch-botany.jpg" alt="Эскиз: Степной мак и травы" class="sketch-img-photo" loading="lazy">
+                        <span class="sketch-status-tag status-free">● Свободен</span>
+                    </div>
+                    <div class="sketch-content">
+                        <div class="sketch-top-meta">
+                            <span class="sketch-cat-mini">БОТАНИКА</span>
+                            <span class="sketch-price-tag">5 500 ₽</span>
+                        </div>
+                        <h3 class="sketch-heading">Степной мак и дикие травы</h3>
+                        <p class="sketch-description">Воздушный контур цветка без плотного закраса. Прекрасно смотрится на предплечье или вдоль позвоночника.</p>
+                        <div class="sketch-details-table">
+                            <span>Размер: 9 × 4 см</span>
+                            <span>Сеанс: ~1.5 часа</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Эскиз 5: Ласточка в полёте -->
+                <article class="sketch-entry" data-category="fineline" data-keywords="ласточка птица полёт крылья минимализм контур софия вернье"
+                    data-title="Ласточка в свободном полёте"
+                    data-desc="Динамичный лаконичный силуэт. Традиционный символ надежды и лёгкости в современном минималистичном исполнении."
+                    data-size="8 × 6 см"
+                    data-duration="~2 часа"
+                    data-price="6 000 ₽"
+                    data-category-name="FINE LINE"
+                    data-img="images/sketch-swallow.jpg">
+                    <div class="sketch-art-canvas">
+                        <img src="images/sketch-swallow.jpg" alt="Эскиз: Ласточка в свободном полёте" class="sketch-img-photo" loading="lazy">
+                        <span class="sketch-status-tag status-archive">○ En archive</span>
+                    </div>
+                    <div class="sketch-content">
+                        <div class="sketch-top-meta">
+                            <span class="sketch-cat-mini">FINE LINE</span>
+                            <span class="sketch-price-tag">6 000 ₽</span>
+                        </div>
+                        <h3 class="sketch-heading">Ласточка в свободном полёте</h3>
+                        <p class="sketch-description">Динамичный лаконичный силуэт. Традиционный символ надежды и лёгкости в современном исполнении.</p>
+                        <div class="sketch-details-table">
+                            <span>Размер: 8 × 6 см</span>
+                            <span>Повтор под заказ</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Эскиз 6: Реликтовый лист гинкго билоба -->
+                <article class="sketch-entry" data-category="botany" data-keywords="гинкго билоба лист ботаника микро-линии ключица александра вейс"
+                    data-title="Реликтовый лист гинкго билоба"
+                    data-desc="Изящные веерные листья с радиальной микро-штриховкой. Символ стойкости и спокойствия, идеален для ключицы или рёбра."
+                    data-size="8 × 5 см"
+                    data-duration="~2 часа"
+                    data-price="6 000 ₽"
+                    data-category-name="БОТАНИКА"
+                    data-img="images/sketch-ginkgo.jpg">
+                    <div class="sketch-art-canvas">
+                        <img src="images/sketch-ginkgo.jpg" alt="Эскиз: Листья гинкго билоба" class="sketch-img-photo" loading="lazy">
+                        <span class="sketch-status-tag status-free">● Свободен</span>
+                    </div>
+                    <div class="sketch-content">
+                        <div class="sketch-top-meta">
+                            <span class="sketch-cat-mini">БОТАНИКА</span>
+                            <span class="sketch-price-tag">6 000 ₽</span>
+                        </div>
+                        <h3 class="sketch-heading">Реликтовый лист гинкго билоба</h3>
+                        <p class="sketch-description">Изящные веерные листья с радиальной микро-штриховкой. Символ стойкости и спокойствия, идеален для ключицы или рёбра.</p>
+                        <div class="sketch-details-table">
+                            <span>Размер: 8 × 5 см</span>
+                            <span>Сеанс: ~2 часа</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Эскиз 7: Лунный мотылёк и лунные фазы -->
+                <article class="sketch-entry" data-category="fineline" data-keywords="мотылёк луна бабочка крылья кружево софия вернье грудь спина"
+                    data-title="Лунный мотылёк и лунные фазы"
+                    data-desc="Ажурные полупрозрачные крылья с лунным циклом между усиками. Создан для симметричного расположения под ключицами или между лопаток."
+                    data-size="11 × 7 см"
+                    data-duration="~2.5 часа"
+                    data-price="7 500 ₽"
+                    data-category-name="FINE LINE"
+                    data-img="images/sketch-moth.jpg">
+                    <div class="sketch-art-canvas">
+                        <img src="images/sketch-moth.jpg" alt="Эскиз: Лунный мотылёк" class="sketch-img-photo" loading="lazy">
+                        <span class="sketch-status-tag status-free">● Свободен</span>
+                    </div>
+                    <div class="sketch-content">
+                        <div class="sketch-top-meta">
+                            <span class="sketch-cat-mini">FINE LINE</span>
+                            <span class="sketch-price-tag">7 500 ₽</span>
+                        </div>
+                        <h3 class="sketch-heading">Лунный мотылёк и лунные фазы</h3>
+                        <p class="sketch-description">Ажурные полупрозрачные крылья с лунным циклом между усиками. Создан для симметричного расположения под ключицами или между лопаток.</p>
+                        <div class="sketch-details-table">
+                            <span>Размер: 11 × 7 см</span>
+                            <span>Сеанс: ~2.5 часа</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Эскиз 8: Средиземноморская олива и лаванда -->
+                <article class="sketch-entry" data-category="botany" data-keywords="олива лаванда ветка прованс ботаника ключица предплечье"
+                    data-title="Средиземноморская олива и лаванда"
+                    data-desc="Изогнутая ветвь с аккуратными оливковыми плодами и соцветиями дикой лаванды. Деликатная посадка вдоль ключицы."
+                    data-size="12 × 4 см"
+                    data-duration="~2 часа"
+                    data-price="6 500 ₽"
+                    data-category-name="БОТАНИКА"
+                    data-img="images/sketch-olive.jpg">
+                    <div class="sketch-art-canvas">
+                        <img src="images/sketch-olive.jpg" alt="Эскиз: Олива и лаванда" class="sketch-img-photo" loading="lazy">
+                        <span class="sketch-status-tag status-free">● Свободен</span>
+                    </div>
+                    <div class="sketch-content">
+                        <div class="sketch-top-meta">
+                            <span class="sketch-cat-mini">БОТАНИКА</span>
+                            <span class="sketch-price-tag">6 500 ₽</span>
+                        </div>
+                        <h3 class="sketch-heading">Средиземноморская олива и лаванда</h3>
+                        <p class="sketch-description">Изогнутая ветвь с аккуратными оливковыми плодами и соцветиями дикой лаванды. Деликатная посадка вдоль ключицы.</p>
+                        <div class="sketch-details-table">
+                            <span>Размер: 12 × 4 см</span>
+                            <span>Сеанс: ~2 часа</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Эскиз 9: Парящий японский журавль -->
+                <article class="sketch-entry" data-category="fineline" data-keywords="журавль птица япония восток крылья микро-гравюра софия вернье"
+                    data-title="Парящий японский журавль"
+                    data-desc="Грациозный силуэт журавля в полёте с детальной проработкой перьев тонкой иглой 0.18 мм. Прекрасно повторяет изгиб рёбер или бедра."
+                    data-size="10 × 8 см"
+                    data-duration="~2.5 часа"
+                    data-price="7 000 ₽"
+                    data-category-name="FINE LINE"
+                    data-img="images/sketch-crane.jpg">
+                    <div class="sketch-art-canvas">
+                        <img src="images/sketch-crane.jpg" alt="Эскиз: Японский журавль" class="sketch-img-photo" loading="lazy">
+                        <span class="sketch-status-tag status-free">● Свободен</span>
+                    </div>
+                    <div class="sketch-content">
+                        <div class="sketch-top-meta">
+                            <span class="sketch-cat-mini">FINE LINE</span>
+                            <span class="sketch-price-tag">7 000 ₽</span>
+                        </div>
+                        <h3 class="sketch-heading">Парящий японский журавль</h3>
+                        <p class="sketch-description">Грациозный силуэт журавля в полёте с детальной проработкой перьев тонкой иглой 0.18 мм. Прекрасно повторяет изгиб рёбер или бедра.</p>
+                        <div class="sketch-details-table">
+                            <span>Размер: 10 × 8 см</span>
+                            <span>Сеанс: ~2.5 часа</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Эскиз 10: Античная небесная астролябия -->
+                <article class="sketch-entry" data-category="geometry" data-keywords="астролябия космос звезды орбиты компас геометрия матиас блан"
+                    data-title="Античная небесная астролябия"
+                    data-desc="Сложное сплетение градуированных кругов, астрономических координат и полярной звезды. Академическая микро-гравюра."
+                    data-size="9 × 9 см"
+                    data-duration="~3 часа"
+                    data-price="8 500 ₽"
+                    data-category-name="ГЕОМЕТРИЯ"
+                    data-img="images/sketch-celestial.jpg">
+                    <div class="sketch-art-canvas">
+                        <img src="images/sketch-celestial.jpg" alt="Эскиз: Небесная астролябия" class="sketch-img-photo" loading="lazy">
+                        <span class="sketch-status-tag status-free">● Свободен</span>
+                    </div>
+                    <div class="sketch-content">
+                        <div class="sketch-top-meta">
+                            <span class="sketch-cat-mini">ГЕОМЕТРИЯ</span>
+                            <span class="sketch-price-tag">8 500 ₽</span>
+                        </div>
+                        <h3 class="sketch-heading">Античная небесная астролябия</h3>
+                        <p class="sketch-description">Сложное сплетение градуированных кругов, астрономических координат и полярной звезды. Академическая микро-гравюра.</p>
+                        <div class="sketch-details-table">
+                            <span>Размер: 9 × 9 см</span>
+                            <span>Сеанс: ~3 часа</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Эскиз 11: Римская античная арка с плющом -->
+                <article class="sketch-entry" data-category="antique" data-keywords="арка архитектура плющ колонна руины античность матиас блан"
+                    data-title="Римская античная арка с плющом"
+                    data-desc="Классическая полуциркульная арка, увитая диким плющом и побегами шиповника. Тонкая архитектурная графика для предплечья."
+                    data-size="11 × 6 см"
+                    data-duration="~2.5 часа"
+                    data-price="7 500 ₽"
+                    data-category-name="МИНИАТЮРА"
+                    data-img="images/sketch-arch.jpg">
+                    <div class="sketch-art-canvas">
+                        <img src="images/sketch-arch.jpg" alt="Эскиз: Римская арка" class="sketch-img-photo" loading="lazy">
+                        <span class="sketch-status-tag status-free">● Свободен</span>
+                    </div>
+                    <div class="sketch-content">
+                        <div class="sketch-top-meta">
+                            <span class="sketch-cat-mini">МИНИАТЮРА</span>
+                            <span class="sketch-price-tag">7 500 ₽</span>
+                        </div>
+                        <h3 class="sketch-heading">Римская античная арка с плющом</h3>
+                        <p class="sketch-description">Классическая полуциркульная арка, увитая диким плющом и побегами шиповника. Тонкая архитектурная графика для предплечья.</p>
+                        <div class="sketch-details-table">
+                            <span>Размер: 11 × 6 см</span>
+                            <span>Сеанс: ~2.5 часа</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Эскиз 12: Спящий лис под листьями папоротника -->
+                <article class="sketch-entry" data-category="antique" data-keywords="лис лиса папоротник лес круг миниатюра софия вернье"
+                    data-title="Спящий лис под листьями папоротника"
+                    data-desc="Уютный круговой эскиз со спящим лисёнком, укрытым резными листьями папоротника. Мягкая пудровая штриховка."
+                    data-size="7 × 7 см"
+                    data-duration="~2 часа"
+                    data-price="6 500 ₽"
+                    data-category-name="МИНИАТЮРА"
+                    data-img="images/sketch-fox.jpg">
+                    <div class="sketch-art-canvas">
+                        <img src="images/sketch-fox.jpg" alt="Эскиз: Спящий лис" class="sketch-img-photo" loading="lazy">
+                        <span class="sketch-status-tag status-free">● Свободен</span>
+                    </div>
+                    <div class="sketch-content">
+                        <div class="sketch-top-meta">
+                            <span class="sketch-cat-mini">МИНИАТЮРА</span>
+                            <span class="sketch-price-tag">6 500 ₽</span>
+                        </div>
+                        <h3 class="sketch-heading">Спящий лис под листьями папоротника</h3>
+                        <p class="sketch-description">Уютный круговой эскиз со спящим лисёнком, укрытым резными листьями папоротника. Мягкая пудровая штриховка.</p>
+                        <div class="sketch-details-table">
+                            <span>Размер: 7 × 7 см</span>
+                            <span>Сеанс: ~2 часа</span>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+
+            <div id="noResultsNotice" style="display: none; text-align: center; padding: 40px 20px; color: var(--ink-muted); font-size: 0.95rem;">
+                По вашему запросу эскизы не найдены. Попробуйте изменить параметры поиска или выберите категорию «Все работы».
+            </div>
+        </section>
+
+        <!-- Раздел мастеров студии L'ENCRE -->
+        <section class="artists-section" id="artistsSection">
+            <div class="section-header-row">
+                <div>
+                    <span class="section-micro-tag">КОМАНДА АТЕЛЬЕ</span>
+                    <h2 class="section-title">Мастера тонкой графики</h2>
+                </div>
+                <p class="section-desc-side">Каждый мастер ведёт авторскую линию исследований в ботанике, микро-гравюре и каллиграфии.</p>
+            </div>
+
+            <div class="artists-grid">
+                <!-- Мастер 1: Александра Вейс -->
+                <article class="artist-card">
+                    <div class="artist-header">
+                        <div class="artist-avatar-plate">AW</div>
+                        <div>
+                            <h3 class="artist-name">Александра Вейс</h3>
+                            <span class="artist-role">Основатель студии • Ведущий мастер</span>
+                        </div>
+                    </div>
+                    <p class="artist-bio">Специализируется на французском ботаническом гербарии, реликтовых травах и микро-линиях ультратонкой иглой 0.18 мм. Посадка эскиза вдоль ключицы и рёбер с учётом пластики дыхания.</p>
+                    <div class="artist-tags">
+                        <span class="artist-tag">Ботаника</span>
+                        <span class="artist-tag">Микро-контур 0.18 мм</span>
+                        <span class="artist-tag">Санкт-Петербург</span>
+                    </div>
+                    <button type="button" class="artist-book-btn" data-artist="Александра Вейс (Ботаника, 0.18 мм)">Записаться к Александре</button>
+                </article>
+
+                <!-- Мастер 2: Матиас Блан -->
+                <article class="artist-card">
+                    <div class="artist-header">
+                        <div class="artist-avatar-plate">MB</div>
+                        <div>
+                            <h3 class="artist-name">Матиас Блан</h3>
+                            <span class="artist-role">Резидент студии • Архитектура и геометрия</span>
+                        </div>
+                    </div>
+                    <p class="artist-bio">Мастер академической микро-гравюры, астрономических карт и античных арок. Работает со строгими геометрическими пропорциями золотого сечения и тончайшей штриховкой.</p>
+                    <div class="artist-tags">
+                        <span class="artist-tag">Античная гравюра</span>
+                        <span class="artist-tag">Астрономия</span>
+                        <span class="artist-tag">Москва</span>
+                    </div>
+                    <button type="button" class="artist-book-btn" data-artist="Матиас Блан (Архитектура, геометрия)">Записаться к Матиасу</button>
+                </article>
+
+                <!-- Мастер 3: София Вернье -->
+                <article class="artist-card">
+                    <div class="artist-header">
+                        <div class="artist-avatar-plate">SV</div>
+                        <div>
+                            <h3 class="artist-name">София Вернье</h3>
+                            <span class="artist-role">Резидент студии • Анималистика и каллиграфия</span>
+                        </div>
+                    </div>
+                    <p class="artist-bio">Создаёт невесомые силуэты ночных мотыльков, парящих птиц и французскую каллиграфию пером. Особое внимание уделяет мягкому переходу тонких линий в прозрачную микро-тень.</p>
+                    <div class="artist-tags">
+                        <span class="artist-tag">Анималистика</span>
+                        <span class="artist-tag">Каллиграфия</span>
+                        <span class="artist-tag">СПб / Москва</span>
+                    </div>
+                    <button type="button" class="artist-book-btn" data-artist="София Вернье (Анималистика, каллиграфия)">Записаться к Софии</button>
+                </article>
+            </div>
+        </section>
+
+        <!-- Памятка по заживлению -->
+        <section class="healing-section" id="healingSection">
+            <div class="healing-intro">
+                <h3>Памятка по правильному заживлению</h3>
+                <p>Тонкие линии требуют бережного ухода в первые дни, чтобы пигмент лёг ровно и без пробелов.</p>
+            </div>
+
+            <div class="healing-timeline">
+                <div class="timeline-card">
+                    <div class="timeline-period">Дни 1 — 5</div>
+                    <h4>Заживляющая плёнка</h4>
+                    <p>Плёнка Suprasorb остаётся на коже всё это время. Не отклеивайте её раньше срока. Принимать душ можно, но избегайте распаривания.</p>
+                </div>
+                <div class="timeline-card">
+                    <div class="timeline-period">Дни 6 — 10</div>
+                    <h4>Очищение и крем</h4>
+                    <p>Аккуратно снимите плёнку под тёплой водой. Промойте детским мылом без отдушек. Наносите крем с декспантенолом 3 раза в день тонким слоем.</p>
+                </div>
+                <div class="timeline-card">
+                    <div class="timeline-period">Дни 11+</div>
+                    <h4>Увлажнение и защита</h4>
+                    <p>Кожа полностью восстановится. Используйте обычный увлажняющий крем и обязательно защищайте татуировку кремом SPF 50+ на солнце.</p>
+                </div>
+            </div>
+            <!-- Интерактивный FAQ-аккордеон -->
+            <div class="healing-faq-block">
+                <div class="healing-faq-header">
+                    <h4>Частые вопросы перед сеансом</h4>
+                    <p>Короткие ответы о подготовке, болевом пороге и сохранении тонких линий</p>
+                </div>
+                <div class="faq-accordion" id="studioFaqAccordion">
+                    <details class="faq-item">
+                        <summary class="faq-question">
+                            <span>Насколько болезненно нанесение тонких линий (0.22 мм)?</span>
+                            <span class="faq-icon" aria-hidden="true">+</span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p>Тонкие микро-линии наносятся стерильными одноразовыми модулями Kwadron с минимальной травматизацией эпидермиса. Ощущения напоминают лёгкое покалывание и переносятся значительно комфортнее, чем плотный закрас или классический контур. Даже на рёбрах и ключицах большинство гостей обходятся без анестезии.</p>
+                        </div>
+                    </details>
+                    <details class="faq-item">
+                        <summary class="faq-question">
+                            <span>Что делать, если заживляющая плёнка Suprasorb отошла раньше срока?</span>
+                            <span class="faq-icon" aria-hidden="true">+</span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p>Небольшое скопление сукровицы под плёнкой в первые 48 часов абсолютно естественно. Но если край плёнки отошёл более чем на 1 см или нарушилась герметичность, плёнку следует аккуратно снять под струёй тёплой воды, промыть кожу нейтральным детским мылом без отдушек и сразу перейти к уходу с кремом Д-Пантенол 3 раза в день.</p>
+                        </div>
+                    </details>
+                    <details class="faq-item">
+                        <summary class="faq-question">
+                            <span>Как правильно подготовиться к первому визиту?</span>
+                            <span class="faq-icon" aria-hidden="true">+</span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p>За сутки до сеанса исключите алкоголь и энергетики (они разжижают кровь). Обязательно выспитесь и плотно поешьте за 1–2 часа до визита. Наденьте свободную хлопковую одежду, которая не будет натирать выбранную зону нанесения.</p>
+                        </div>
+                    </details>
+                    <details class="faq-item">
+                        <summary class="faq-question">
+                            <span>Понадобится ли повторная коррекция тонкой графики?</span>
+                            <span class="faq-icon" aria-hidden="true">+</span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p>При соблюдении памятки по заживлению в 90% случаев коррекция не требуется: органический пигмент сохраняет чистый угольный оттенок. При необходимости бесплатный контрольный осмотр и микро-коррекция проводятся в течение 60 дней после полного восстановления кожи.</p>
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- Lightbox детального просмотра эскиза -->
+        <div class="sketch-lightbox-backdrop" id="sketchLightbox" role="dialog" aria-modal="true" style="display: none;">
+            <div class="lightbox-dialog">
+                <button class="lightbox-close" id="lightboxCloseBtn" type="button" aria-label="Закрыть детальный просмотр">&times;</button>
+                <div class="lightbox-figure">
+                    <div class="lightbox-img-wrap">
+                        <img src="" alt="" id="lightboxImg" class="lightbox-image">
+                    </div>
+                    <div class="lightbox-meta">
+                        <span class="lightbox-cat-badge" id="lightboxCatBadge">БОТАНИКА</span>
+                        <h3 id="lightboxTitle" class="lightbox-title"></h3>
+                        <p id="lightboxDetails" class="lightbox-desc"></p>
+                        <div class="lightbox-specs-row">
+                            <div>
+                                <span class="spec-micro-label">Масштаб</span>
+                                <span class="spec-micro-val" id="lightboxDimensions">12 × 6 см</span>
+                            </div>
+                            <div>
+                                <span class="spec-micro-label">Длительность</span>
+                                <span class="spec-micro-val" id="lightboxDuration">~2.5 часа</span>
+                            </div>
+                        </div>
+                        <button class="lightbox-book-btn" id="lightboxBookBtn" type="button">Запросить примерку эскиза</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Модальное окно онлайн-заявки на примерку эскиза -->
+        <div class="sketch-lightbox-backdrop" id="bookingInquiryModal" role="dialog" aria-modal="true" style="display: none;">
+            <div class="lightbox-dialog booking-dialog">
+                <button class="lightbox-close" id="bookingCloseBtn" type="button" aria-label="Закрыть заявку">&times;</button>
+                <div class="booking-dialog-content">
+                    
+                    <div id="bookingFormView">
+                        <div class="booking-header">
+                            <span class="lightbox-cat-badge">ОНЛАЙН-ЗАПИСЬ</span>
+                            <h3 class="booking-title">Запрос на примерку эскиза</h3>
+                            <p class="booking-subtitle">Предварительное бронирование без предоплаты. Мастер свяжется с вами для согласования деталей.</p>
+                        </div>
+
+                        <!-- Выбранный эскиз -->
+                        <div class="booking-selected-sketch">
+                            <img src="images/sketch-peony.jpg" alt="" id="bookingSketchThumb" class="booking-thumb">
+                            <div class="booking-sketch-info">
+                                <h4 id="bookingSketchTitle">Дикий пион и ветка папоротника</h4>
+                                <span id="bookingSketchMeta">Масштаб: 12 × 6 см • Сеанс: ~2.5 часа</span>
+                            </div>
+                        </div>
+
+                        <form id="studioBookingForm" class="booking-form" onsubmit="return false;">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="bookClientName" class="form-label">Ваше имя *</label>
+                                    <input type="text" id="bookClientName" class="form-input" placeholder="Например, Анна" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="bookClientContact" class="form-label">Telegram или телефон *</label>
+                                    <input type="text" id="bookClientContact" class="form-input" placeholder="@username или +7..." required>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="bookStudioCity" class="form-label">Студия</label>
+                                    <select id="bookStudioCity" class="form-select">
+                                        <option value="spb">Санкт-Петербург • Рубинштейна, 24</option>
+                                        <option value="msk">Москва • Покровка, 12</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="bookArtistSelect" class="form-label">Желаемый мастер</label>
+                                    <select id="bookArtistSelect" class="form-select">
+                                        <option value="any">Любой свободный мастер студии</option>
+                                        <option value="Александра Вейс (Ботаника, 0.18 мм)">Александра Вейс (Ботаника, 0.18 мм)</option>
+                                        <option value="Матиас Блан (Архитектура, геометрия)">Матиас Блан (Архитектура, геометрия)</option>
+                                        <option value="София Вернье (Анималистика, каллиграфия)">София Вернье (Анималистика, каллиграфия)</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="bookBodyPlacement" class="form-label">Анатомическая зона</label>
+                                    <select id="bookBodyPlacement" class="form-select">
+                                        <option value="collarbone">Ключица / плечо</option>
+                                        <option value="ribs">Изгиб рёбер</option>
+                                        <option value="forearm">Предплечье / запястье</option>
+                                        <option value="ankle">Лодыжка / голень</option>
+                                        <option value="other">Другое расположение</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="bookPreferredDate" class="form-label">Удобное время для визита</label>
+                                <select id="bookPreferredDate" class="form-select">
+                                    <option value="any">Ближайшие свободные даты</option>
+                                    <option value="weekend">Только суббота или воскресенье</option>
+                                    <option value="evening">Будни после 18:00</option>
+                                    <option value="consultation">Сначала очная консультация и примерка на кальке</option>
+                                </select>
+                            </div>
+
+                            <button type="submit" id="submitBookingBtn" class="booking-submit-btn">Отправить запрос мастеру</button>
+                        </form>
+                    </div>
+
+                    <!-- Экран успешной отправки заявки -->
+                    <div id="bookingSuccessView" class="booking-success" style="display: none;">
+                        <div class="success-checkmark-circle">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20 6L9 17l-5-5"/>
+                            </svg>
+                        </div>
+                        <h3 class="success-title">Заявка принята</h3>
+                        <p class="success-desc">Мастер Александра свяжется с вами в Telegram или WhatsApp в течение двух часов для согласования времени примерки эскиза на трансферной бумаге.</p>
+                        <button type="button" id="bookingSuccessDoneBtn" class="booking-return-btn">Вернуться к просмотру каталога</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Подвал студии -->
+    <footer class="studio-footer">
+        <p class="footer-click-trigger" id="footerStealthTrigger">© 2026 L'ENCRE Studio. Все эскизы защищены авторским правом.</p>
+    </footer>
+
+    <!-- =========================================================
+         ВТОРОЕ ДНО: НАСТОЯЩИЙ СЕКРЕТНЫЙ РЕЖИМ
+         ========================================================= -->
+    <div class="stealth-modal-backdrop" id="secretOverlay" role="dialog" aria-modal="true" style="display: none;">
+        <div class="editor-window">
+            
+            <!-- Верхняя строка -->
+            <div class="editor-topbar">
+                <div class="editor-status-indicator">
+                    <span class="status-bullet" id="keyStatusDot"></span>
+                    <span id="keyStatusText">Ключ не задан</span>
+                </div>
+                <button class="editor-close-btn" id="panicBtn" type="button" title="Закрыть и очистить память (Esc)">Закрыть (Esc)</button>
+            </div>
+
+            <!-- Ввод мастер-ключа -->
+            <div class="editor-key-row">
+                <input type="password" id="masterKeyInput" class="editor-key-input" placeholder="Пароль доступа (известный только вам двоим)..." autocomplete="off">
+                <button class="editor-btn solid" id="saveKeyBtn" type="button">Применить</button>
+            </div>
+
+            <!-- Вкладки -->
+            <nav class="editor-nav">
+                <button class="editor-tab-btn active tab-btn" data-tab="tabCrypto">Шифрование заметок</button>
+                <button class="editor-tab-btn tab-btn" data-tab="tabChat">Прямой диалог</button>
+            </nav>
+
+            <div class="editor-body">
+                
+                <!-- ВКЛАДКА 1: Шифратор со стеганографией -->
+                <div class="editor-panel active tab-panel" id="tabCrypto">
+                    
+                    <!-- Блок зашифровки -->
+                    <div class="notepad-section">
+                        <div class="section-label-row">
+                            <span class="notepad-title">Зашифровать послание</span>
+                            <span class="field-caption">AES-256-GCM локально</span>
+                        </div>
+                        
+                        <div>
+                            <label class="field-caption" for="plainTextInput" style="display:block; margin-bottom:4px;">Текст сообщения:</label>
+                        <!-- Быстрые шаблоны сообщений -->
+                        <div class="preset-chips-strip">
+                            <span class="field-caption">Быстрые шаблоны сообщений (в 1 клик):</span>
+                            <div class="preset-chips" id="presetChipsContainer">
+                                <button type="button" class="preset-chip" data-preset="Всё в порядке, не переживай.">Всё в порядке</button>
+                                <button type="button" class="preset-chip" data-preset="Я дома. Напиши, как освободишься.">Я дома</button>
+                                <button type="button" class="preset-chip" data-preset="Перезвони мне, как сможешь.">Перезвони мне</button>
+                                <button type="button" class="preset-chip" data-preset="Не могу сейчас говорить. На связи вечером.">Не могу говорить</button>
+                                <button type="button" class="preset-chip" data-preset="Удали нашу переписку и очисти историю.">Удали переписку</button>
+                                <button type="button" class="preset-chip" data-preset="Мне нужна твоя помощь. Ответь срочно.">Нужна помощь</button>
+                            </div>
+                        </div>
+                            <textarea id="plainTextInput" class="editor-textarea" placeholder="Напишите здесь ваше сообщение..."></textarea>
+                        </div>
+
+                        <div>
+                            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+                                <label class="field-caption" for="coverTextInput">Фраза-прикрытие (любая ваша фраза для маскировки):</label>
+                                <button type="button" id="randomCoverBtn" style="background:none; border:none; color:#93c5fd; font-size:0.75rem; cursor:pointer; text-decoration:underline;">Сменить вариант</button>
+                            </div>
+                            <input type="text" id="coverTextInput" class="editor-input-single" value="Привет! Свободен эскиз с папоротником на ключицу, посмотри." placeholder="Впишите сюда любую свою фразу (хоть «Купи молока»)...">
+                        </div>
+
+                        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                            <button class="editor-btn solid" id="encryptStealthBtn" type="button">Спрятать в фразу об эскизе</button>
+                            <button class="editor-btn" id="encryptLinkBtn" type="button">Ссылка на эскиз (Dead Drop)</button>
+                            <button class="editor-btn" id="encryptImgBtn" type="button">Спрятать в картинку PNG</button>
+                            <button class="editor-btn" id="encryptCodeBtn" type="button">Код Base64</button>
+                        </div>
+
+                        <div class="output-notepad" id="encryptResultBox">
+                            <span class="field-caption">Готово к отправке:</span>
+                            <div class="output-read-text" id="encryptResultText"></div>
+                            <div class="output-subtip" id="encryptResultHint"></div>
+                            <div style="display: flex; gap: 8px; margin-top: 4px; flex-wrap: wrap;">
+                                <button class="editor-btn" id="copyResultBtn">Скопировать в буфер</button>
+                                <button class="editor-btn" id="showQrBtn" type="button">Показать QR-код</button>
+                                <button class="editor-btn" id="shareResultBtn" style="display: none;">Поделиться</button>
+                            </div>
+                            <!-- Автономный чистый SVG QR-код -->
+                            <div id="qrCodeContainer" class="qr-offline-box" style="display: none;">
+                                <div id="qrCodeSvgWrap" class="qr-svg-wrap"></div>
+                                <span class="qr-scan-subtip">Сканируйте камерой с экрана без использования буфера обмена</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Блок расшифровки -->
+                    <div class="notepad-section">
+                        <div class="section-label-row">
+                            <span class="notepad-title">Расшифровать послание</span>
+                            <span class="field-caption">Автоопределение текста, ссылок и картинок</span>
+                        </div>
+
+                        <!-- Оповещение об отложенном сообщении из ссылки (Dead Drop) -->
+                        <div id="incomingLinkAlert" class="incoming-drop-box" style="display: none; background: rgba(59, 130, 246, 0.12); border: 1px solid rgba(59, 130, 246, 0.35); border-radius: 4px; padding: 12px 14px; margin-bottom: 12px;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                                <span style="font-size: 0.82rem; font-weight: 600; color: #93c5fd; display: flex; align-items: center; gap: 6px;">
+                                    <span>📩</span> Обнаружено отложенное послание в ссылке
+                                </span>
+                                <button type="button" id="clearDropHashBtn" class="editor-btn" style="min-height: 24px; padding: 2px 8px; font-size: 0.72rem; color: #f87171;" title="Удалить фрагмент из адресной строки">Стереть след в URL</button>
+                            </div>
+                            <p style="font-size: 0.78rem; color: #d1d5db; margin: 0 0 10px 0; line-height: 1.45;">
+                                В ссылке, по которой открыт сайт, спрятано зашифрованное послание (адресная строка уже автоматически очищена). Введите мастер-пароль — оно расшифруется.
+                            </p>
+                            <button type="button" id="decryptDropBtn" class="editor-btn solid" style="width: 100%; font-size: 0.82rem; padding: 8px 12px;">Расшифровать послание из ссылки</button>
+                        </div>
+                        
+                        <div>
+                            <label class="field-caption" for="cipherTextInput" style="display:block; margin-bottom:4px;">Вставьте полученную фразу, код или загрузите эскиз:</label>
+                            <textarea id="cipherTextInput" class="editor-textarea" placeholder="Вставьте сюда текст сообщения..."></textarea>
+                        </div>
+
+                        <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
+                            <button class="editor-btn solid" id="decryptBtn" type="button">Расшифровать текст</button>
+                            <button class="editor-btn" id="pasteDecryptBtn" type="button">Вставить из буфера</button>
+                            
+                            <!-- Скрытый инпут для картинки эскиза -->
+                            <input type="file" id="decryptImgInput" accept="image/png,image/jpeg" style="display: none;">
+                            <button class="editor-btn" id="decryptImgBtn" type="button">Извлечь из картинки PNG</button>
+                        </div>
+
+                        <div class="output-notepad" id="decryptResultBox">
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <span class="field-caption" style="color: #6ee7b7;">Прочитанное сообщение:</span>
+                                
+                                <!-- Опции самоуничтожения -->
+                                <div style="display: flex; align-items: center; gap: 6px;">
+                                    <span id="burnCountdown" style="font-size: 0.75rem; color: #f87171; display: none;">Сгорит через: 30с</span>
+                                    <button class="editor-btn" id="burnNowBtn" style="min-height: 26px; padding: 2px 8px; font-size: 0.72rem; color: #f87171;" type="button">Сжечь сейчас</button>
+                                </div>
+                            </div>
+
+                            <div class="output-read-text" id="decryptResultText" style="color: #f3f4f6; font-size: 0.95rem;"></div>
+                            
+                            <!-- Полоса прогресса таймера самоуничтожения -->
+                            <div id="burnProgressBar" style="height: 2px; width: 100%; background: #374151; display: none; margin-top: 4px;">
+                                <div id="burnProgressFill" style="height: 100%; width: 100%; background: #ef4444; transition: width linear;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- ВКЛАДКА 2: Диалог -->
+                <div class="editor-panel tab-panel" id="tabChat">
+                    <div class="chat-info-bar">
+                        <div class="chat-info-left">
+                            <span id="chatStatusText">Введите ключ для подключения к диалогу.</span>
+                            <select id="chatAutoDestructSelect" class="chat-destruct-select" title="Автоуничтожение сообщений с экрана">
+                                <option value="0">Сгорание: выкл</option>
+                                <option value="30">Сгорание: 30 сек</option>
+                                <option value="60">Сгорание: 60 сек</option>
+                            </select>
+                        </div>
+                        <div style="display: flex; gap: 6px; align-items: center;">
+                            <button class="editor-btn" id="clearChatScreenBtn" style="min-height: 28px; padding: 2px 10px; font-size: 0.72rem;">Очистить экран</button>
+                            <button class="editor-btn" id="clearRoomServerBtn" style="min-height: 28px; padding: 2px 10px; font-size: 0.72rem; color: #f87171;" title="Удалить все сообщения комнаты с сервера">Стереть с сервера</button>
+                        </div>
+                    </div>
+
+                    <label class="beacon-toggle-row" for="stealthBeaconToggle" title="При открытии сайта незаметно проверять наличие новых сообщений (хранит только необратимый хэш канала)">
+                        <input type="checkbox" id="stealthBeaconToggle">
+                        <span>Тихий маячок на главной: менять цвет точки у 1-го эскиза, если в чате ждёт сообщение</span>
+                    </label>
+
+                    <div class="chat-stream-box" id="chatWindow">
+                        <div style="margin: auto; color: #555b66; font-size: 0.82rem;" id="chatEmptyPlaceholder">Сообщений пока нет. Они появятся здесь после отправки.</div>
+                    </div>
+
+                    <div class="chat-control-strip">
+                        <input type="text" id="chatMessageInput" class="editor-input-single" placeholder="Напишите сообщение..." autocomplete="off">
+                        <button class="editor-btn" id="chatPasteBtn" type="button" title="Вставить из буфера обмена">Вставить</button>
+                        <button class="editor-btn solid" id="chatSendBtn" type="button">Отправить</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- =========================================================
+         ТРЕВОЖНЫЙ РЕЖИМ (DURESS PASSWORD / ЛОЖНЫЙ БЛОКНОТ)
+         Активируется при вводе пароля-приманки: "отмена", "1234", "тревога"
+         ========================================================= -->
+    <div class="stealth-modal-backdrop" id="duressOverlay" role="dialog" aria-modal="true" style="display: none;">
+        <div class="editor-window">
+            <div class="editor-topbar">
+                <div class="editor-status-indicator">
+                    <span class="status-bullet" style="background: #a1a1aa;"></span>
+                    <span style="color: #d4d4d8;">Личные заметки по эскизам</span>
+                </div>
+                <button class="editor-close-btn" id="duressCloseBtn" type="button">Закрыть</button>
+            </div>
+
+            <div class="editor-body">
+                <div class="notepad-section">
+                    <span class="notepad-title">Мои идеи для татуировок (к консультации)</span>
+                    <span class="field-caption">Черновики эскизов и ориентировочный бюджет</span>
+
+                    <ul style="list-style: none; display: flex; flex-direction: column; gap: 10px; margin-top: 8px;" id="duressNotesList">
+                        <li style="background: #0d0e11; padding: 10px 12px; border-radius: 4px; border: 1px solid var(--editor-border); font-size: 0.88rem; color: #e4e4e7;">
+                            ✔ <strong>Веточка дикого папоротника</strong> на ключице (тонкая игла 0.22 мм, размер ~10 см). Мастер Александра.
+                        </li>
+                        <li style="background: #0d0e11; padding: 10px 12px; border-radius: 4px; border: 1px solid var(--editor-border); font-size: 0.88rem; color: #e4e4e7;">
+                            ✔ <strong>Минималистичные лунные фазы</strong> на запястье. Примерить размер 6×4 см.
+                        </li>
+                        <li style="background: #0d0e11; padding: 10px 12px; border-radius: 4px; border: 1px solid var(--editor-border); font-size: 0.88rem; color: #e4e4e7;">
+                            ✔ <strong>Аптека:</strong> купить крем Д-Пантенол и антибактериальное мыло без отдушек.
+                        </li>
+                        <li style="background: #0d0e11; padding: 10px 12px; border-radius: 4px; border: 1px solid var(--editor-border); font-size: 0.88rem; color: #e4e4e7;">
+                            ✔ <strong>Бюджет сеанса:</strong> ориентировочно 4000–5000 ₽. Запись на субботу.
+                        </li>
+                    </ul>
+
+                    <div style="display: flex; gap: 8px; margin-top: 10px;">
+                        <input type="text" id="duressNewNoteInput" class="editor-input-single" placeholder="Добавить новую заметку...">
+                        <button class="editor-btn solid" id="duressAddNoteBtn" type="button">Добавить</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Регистрация Service Worker для Offline / PWA режима -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js?v=16').then((reg) => {
+                    reg.update().catch(() => {});
+                }).catch(() => {});
+            });
+        }
+    </script>
+
+    <!-- Каталог и интерактивная логика студии -->
+    <script src="studio-catalog.min.js?v=16"></script>
+</body>
+</html>
